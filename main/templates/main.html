@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Makanan Page</title>
+</head>
+<body>
+    <h1>Stok Makanan Page</h1>
+    <hr>
+    
+    <h3>Name: {{ name }}</h3>
+    
+    <h3>Class: {{ class }}</h3>
+    
+    <hr>
+    
+    <h2>Stok Tersedia</h2>
+    
+    <hr>
+    
+    <ul>
+        {% for item in stok %}
+        <li>
+            {{ item.name }} — {{ item.amount }}
+            {% if item.description %}
+            <br>
+            <span>Description: {{ item.description }}</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
