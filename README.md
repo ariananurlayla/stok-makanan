@@ -93,3 +93,5 @@ View: bagian yang mengatur tampilan antarmuka pengguna, tetapi tidak mengolah da
 ViewModel: bagian yang menghubungkan 'model' dan 'view', meneruskan data yang akan ditampilkan ke 'view'
 
 ## Perbedaan
+
+Pada konsep MVC, pemisahan kerja lebih tegas dibanding konsep lainnya. Bagian yang serupa dengan 'Controller pada MVC' adalah 'Template pada MVT' dan 'ViewModel pada MVVM'. Meski demikian, terdapat perbedaan di antara ketiga konsep, seperti yang telah disampaikan sebelumnya.
