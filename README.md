@@ -1,8 +1,6 @@
 ## Tugas Individu PBP
 
-# stok-makanan
-
-### [Aplikasi](https://stok-nyamnyam.adaptable.app/)
+# stok-makanan [Aplikasi](https://stok-nyamnyam.adaptable.app/)
 
 ## 1. Cara Implementasi
 
