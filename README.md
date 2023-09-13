@@ -6,40 +6,41 @@
 
 ## 1. Cara Implementasi
 
-- Memilih direktori lokal yang akan menyimpan proyek Git dan melakukan inisiasi repositori baru dengan berintah ‘git init’.
-- Menghubungkan keduanya dengan perintah ‘git remote add origin <url_repo_github>’.
-- Membuat virtual environment untuk projek baru ini dengan ‘python -m venv env’ dan mengaktifkannya ‘env\Scripts\activate.bat’.
-- Pada direktori yang sama, saya menambahkan berkas ‘requirements.txt’ yang berisi dependencies sebagai berikut:
-  ‘’’
+1. Memilih direktori lokal yang akan menyimpan proyek Git dan melakukan inisiasi repositori baru dengan berintah ‘git init`.
+
+- Menghubungkan keduanya dengan perintah ‘git remote add origin <url_repo_github>`.
+- Membuat virtual environment untuk projek baru ini dengan ‘python -m venv env` dan mengaktifkannya ‘env\Scripts\activate.bat`.
+- Pada direktori yang sama, saya menambahkan berkas ‘requirements.txt` yang berisi dependencies sebagai berikut:
+  ```
   Django
   Gunicorn
   Whitenoise
   psycopg2-binary
   requests
   urllib3
-  ‘’’
-- Memasang dependencies dengan perintah ‘pip install -r requirements.txt’
-- Membuat proyek Django baru Bernama ‘stok_makanan’ dengan perintah ‘django-admin startproject stok_makanan .’
-- Menambahkan file ‘.gitignore’
-- Mengatur akses aplikasi web dengan menambahkan ‘\*’ pada ‘ALLOWED_HOST’ pada ‘settings.py’
-- Mendaftarkan ‘main’ dalam proyek _stok makanan_:
-  - Membuat aplikasi ‘main’ dalam proyek ‘stok_makanan’ dengan ‘python manage.py startapp main’
-  - Menambahkan ‘main’ ke ‘INSTALLED_APPS’ dalam ‘settings.py’
-- Menambahkan direktori ‘template’ pada direktori ‘main’
-- Menambahkan file ‘main.html’ dalam direktori ‘templates’ pada aplikasi ‘main’ yang nantinya akan menampilkan data aplikasi
-- Menambahkan fungsi ‘show_main’ pada ‘views.py’ yang ada pada direksori aplikasi ‘main’ yang berfungsi mengatur permintaan HTTP dan mengembalikan tampilan yang sesuai.
+  ```
+- Memasang dependencies dengan perintah ‘pip install -r requirements.txt`
+- Membuat proyek Django baru Bernama ‘stok_makanan` dengan perintah ‘django-admin startproject stok_makanan .`
+- Menambahkan file ‘.gitignore`
+- Mengatur akses aplikasi web dengan menambahkan ‘\*` pada ‘ALLOWED_HOST` pada ‘settings.py`
+- Mendaftarkan ‘main` dalam proyek _stok makanan_:
+  - Membuat aplikasi ‘main` dalam proyek ‘stok_makanan` dengan ‘python manage.py startapp main`
+  - Menambahkan ‘main` ke ‘INSTALLED_APPS` dalam ‘settings.py`
+- Menambahkan direktori ‘template` pada direktori ‘main`
+- Menambahkan file ‘main.html` dalam direktori ‘templates` pada aplikasi ‘main` yang nantinya akan menampilkan data aplikasi
+- Menambahkan fungsi ‘show_main` pada ‘views.py` yang ada pada direksori aplikasi ‘main` yang berfungsi mengatur permintaan HTTP dan mengembalikan tampilan yang sesuai.
 - Melakukan routing URL
   - Mengonfigurasi routing URL aplikasi main agar dapat diakses melalui peramban web
-    - Membuat berkas ‘urls.py’ dalam direktori ‘main’, seperti yang telah diberikan saat tutorial
-  - Mengonfigurasi routing URL proyek untuk menghubungkannya ke tampilan ‘main’
-    - Menambahkan rute URL pada ‘urls.py’ dalam direktori proyek ‘stok_makanan’, seperti yang telah diberikan saat tutorial
-- Mengubah berkas ‘models.py’ dalam aplikasi ‘main’ sesuai kebutuhan
-  - Menambahkan ‘Item’ dengan atribut ‘name’, ‘amount’, dan ‘description’
+    - Membuat berkas ‘urls.py` dalam direktori ‘main`, seperti yang telah diberikan saat tutorial
+  - Mengonfigurasi routing URL proyek untuk menghubungkannya ke tampilan ‘main`
+    - Menambahkan rute URL pada ‘urls.py` dalam direktori proyek ‘stok_makanan`, seperti yang telah diberikan saat tutorial
+- Mengubah berkas ‘models.py` dalam aplikasi ‘main` sesuai kebutuhan
+  - Menambahkan ‘Item` dengan atribut ‘name`, ‘amount`, dan ‘description`
     - name sebagai nama item dengan tipe CharField.
     - amount sebagai jumlah item dengan tipe IntegerField.
     - description sebagai deskripsi item dengan tipe TextField.
-- Menambahkan unit test ‘tests.py’ pada direktori aplikasi ‘main’, seperti yang diberikan pada tutorial
-- Melakukan deployment proyek pada Adaptable.io, seperti yang dicontohkan pada tutorial dengan melakukan penyesuaian yang dibutuhkan dan start command ‘python manage.py migrate && gunicorn stok_makanan.wsgi’
+- Menambahkan unit test ‘tests.py` pada direktori aplikasi ‘main`, seperti yang diberikan pada tutorial
+- Melakukan deployment proyek pada Adaptable.io, seperti yang dicontohkan pada tutorial dengan melakukan penyesuaian yang dibutuhkan dan start command ‘python manage.py migrate && gunicorn stok_makanan.wsgi`
 
 ## 2. Bagan
 
