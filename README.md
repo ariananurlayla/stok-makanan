@@ -48,9 +48,9 @@
 Penjelasan bagan:
 
 1. Client memerintahkan peramban web untuk mengunjungi situs berbasis django.
-2. Peramban akan mengirimkan 'HTTP Request' dari client ke server situs yang dikunjungi. Request akan dihandle oleh 'urls.py'.
-3. Setelah pattern ditemukan, function dalam 'views.py' yang sesuai (fungsi yang terikat dengan url tersebut) akan memproses request client. 'models.py' menyimpan data dan logika aplikasi. 'views.py' memproses request dengan menampilkan data dari model (models.py) dan menghubungkannya dengan template (.html).
-4. Setelah itu, peramban web akan mengirimkan halaman web yang diminta client berupa 'html'. Peramban client merender 'html' sebagai 'HTTP Response' dari server django.
+2. Peramban akan mengirimkan `HTTP Request` dari client ke server situs yang dikunjungi. Request akan dihandle oleh `urls.py`.
+3. Setelah pattern ditemukan, function dalam `views.py` yang sesuai (fungsi yang terikat dengan url tersebut) akan memproses request client. `models.py` menyimpan data dan logika aplikasi. `views.py` memproses request dengan menampilkan data dari model (models.py) dan menghubungkannya dengan template (.html).
+4. Setelah itu, peramban web akan mengirimkan halaman web yang diminta client berupa `html`. Peramban client merender `html` sebagai `HTTP Response` dari server django.
 
 ## 3. Virtual Environment
 
@@ -72,26 +72,26 @@ Konsep arsitektur dalam pengembangan web untuk memisahkan komponen-komponen utam
 
 Model: bagian yang mengelola data dan logika aplikasi
 View: bagian yang mengatur tampilan data dari model
-Controller: bagian yang bertugas mengatur _flow_ interaksi 'model' dan 'view'. Meneruskan hasil manipulasi data dari 'model' ke 'view' yang akan ditampilkan pada layar pengguna
+Controller: bagian yang bertugas mengatur _flow_ interaksi `model` dan `view`. Meneruskan hasil manipulasi data dari `model` ke `view` yang akan ditampilkan pada layar pengguna
 
 ### MVT (Model View Template)
 
 <img src=https://miro.medium.com/v2/resize:fit:1400/0*8ZFh-CsrMi7bQG0O.jpg>
 
 Model: bagian yang mengelola data dan logika aplikasi
-View: bagian yang menampilkan data dari 'model' dan menghubungkannya dengan 'template'
-Template: bagian yang mengatur tampilan antarmuka pengguna (serupa dengan 'Controller' pada 'MVC')
+View: bagian yang menampilkan data dari `model` dan menghubungkannya dengan `template`
+Template: bagian yang mengatur tampilan antarmuka pengguna (serupa dengan `Controller` pada `MVC`)
 
 ### MVVM (Model View ViewModel)
 
 <img src=https://media.geeksforgeeks.org/wp-content/uploads/20221012200730/gfgmvvm.png>
 
-Pola desain yang membedakan UI dengan logika dari aplikasi. 'Viewmodel' serupa dengan 'Controller'. Konsep ini memungkinkan pengembang melakukan pemisahan kerja yang lebih baik antara UI dengan logika.
+Pola desain yang membedakan UI dengan logika dari aplikasi. `Viewmodel` serupa dengan `Controller`. Konsep ini memungkinkan pengembang melakukan pemisahan kerja yang lebih baik antara UI dengan logika.
 
 Model: bagian yang mengatur data dan logika aplikasi
 View: bagian yang mengatur tampilan antarmuka pengguna, tetapi tidak mengolah data
-ViewModel: bagian yang menghubungkan 'model' dan 'view', meneruskan data yang akan ditampilkan ke 'view'
+ViewModel: bagian yang menghubungkan `model` dan `view`, meneruskan data yang akan ditampilkan ke `view`
 
 ## Perbedaan
 
-Pada konsep MVC, pemisahan kerja lebih tegas dibanding konsep lainnya. Bagian yang serupa dengan 'Controller pada MVC' adalah 'Template pada MVT' dan 'ViewModel pada MVVM'. Meski demikian, terdapat perbedaan di antara ketiga konsep, seperti yang telah disampaikan sebelumnya.
+Pada konsep MVC, pemisahan kerja lebih tegas dibanding konsep lainnya. Bagian yang serupa dengan `Controller pada MVC` adalah `Template pada MVT` dan `ViewModel pada MVVM`. Meski demikian, terdapat perbedaan di antara ketiga konsep, seperti yang telah disampaikan sebelumnya.
