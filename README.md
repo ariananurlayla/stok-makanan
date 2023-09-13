@@ -68,7 +68,7 @@ Konsep arsitektur dalam pengembangan web untuk memisahkan komponen-komponen utam
 
 ### MVC (Model View Controller)
 
-<img src=https://i0.wp.com/thedotnetguide.com/wp-content/uploads/2019/01/MVC_Diagram.jpg?fit=559%2C348&ssl=1>
+<img src=https://ristek.link/mvc-pic>
 
 Model: bagian yang mengelola data dan logika aplikasi
 View: bagian yang mengatur tampilan data dari model
