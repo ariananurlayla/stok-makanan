@@ -1,7 +1,9 @@
 ## Tugas Individu PBP
 
-# stok-makanan [link](https://stok-nyamnyam.adaptable.app/)
+# [stok-makanan](https://stok-nyamnyam.adaptable.app/)
 
+<details>
+<summary> Tugas 2 </summary>
 ## 1. Cara Implementasi
 
 1. Memilih direktori lokal yang akan menyimpan proyek Git dan melakukan inisiasi repositori baru dengan berintah `git init`.
@@ -94,3 +96,4 @@ ViewModel: bagian yang menghubungkan `model` dan `view`, meneruskan data yang ak
 ## Perbedaan
 
 Pada konsep MVC, pemisahan kerja lebih tegas dibanding konsep lainnya. Bagian yang serupa dengan `Controller pada MVC` adalah `Template pada MVT` dan `ViewModel pada MVVM`. Meski demikian, terdapat perbedaan di antara ketiga konsep, seperti yang telah disampaikan sebelumnya.
+</details>
