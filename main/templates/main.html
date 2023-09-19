@@ -28,8 +28,10 @@
             <th>Amount</th>
             <th>Description</th>
         </tr>
-    
-        {% for item in stok %}
+
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+        {% for item in items %}
         <tr>
             <td>{{ item.name }}</td>
             <td>{{ item.amount }}</td>
@@ -37,6 +39,13 @@
         </tr>
         {% endfor %}
     </table>
+    <br />
+
+    <a href="{% url 'main:create_item' %}">
+        <button>
+            Add New Item
+        </button>
+    </a>
     {% endblock %}
 </body>
 </html>
