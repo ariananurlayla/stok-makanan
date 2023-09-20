@@ -3,7 +3,6 @@
 # [stok-makanan](https://stok-nyamnyam.adaptable.app/)
 
 <details>
-<<<<<<< HEAD
 <summary> Tugas 3 </summary>
 
 ## Perbedaan antara _form_ `POST`dan `GET` dalam Django
@@ -94,8 +93,6 @@ class ProductForm(ModelForm):
 </details>
 
 <details>
-=======
->>>>>>> 864ae4db6a19c1ab1306dc934cf21e2afa0a956b
 <summary> Tugas 2 </summary>
 ## 1. Cara Implementasi
 
@@ -189,8 +186,5 @@ ViewModel: bagian yang menghubungkan `model` dan `view`, meneruskan data yang ak
 ## Perbedaan
 
 Pada konsep MVC, pemisahan kerja lebih tegas dibanding konsep lainnya. Bagian yang serupa dengan `Controller pada MVC` adalah `Template pada MVT` dan `ViewModel pada MVVM`. Meski demikian, terdapat perbedaan di antara ketiga konsep, seperti yang telah disampaikan sebelumnya.
-<<<<<<< HEAD
 
-=======
->>>>>>> 864ae4db6a19c1ab1306dc934cf21e2afa0a956b
 </details>
