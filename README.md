@@ -52,7 +52,7 @@ class ProductForm(ModelForm):
 3. Memodifikasi `views.py` dengan menambahkan fungsi-fungsi yang dibutuhkan. Fungsi dalam `views.py`
 
 - `show_main` --> menampilkan data `Item` melalui _form_
-- `create_product`
+- `create_product` --> mengelola pembuatan produk
 - `show_html` --> menampilkan data dalam bentuk HTML
 - `show_xml` --> menampilkan data dalam bentuk XML
 - `show_json` --> menampilkan data dalam bentuk JSON
