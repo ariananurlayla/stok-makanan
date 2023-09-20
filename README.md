@@ -49,14 +49,15 @@ class ProductForm(ModelForm):
         fields = ["name", "amount", "description"]
 ```
 
-3. Memodifikasi `views.py` dengan menambahkan fungsi-fungsi yang dibutuhkan. Fungsi dalam `views.py`:
-   `show_main` --> menampilkan data `Item` melalui _form_
-   `create_product`
-   `show_html` --> menampilkan data dalam bentuk HTML
-   `show_xml` --> menampilkan data dalam bentuk XML
-   `show_json` --> menampilkan data dalam bentuk JSON
-   `show_xml_by_id` --> menampilkan data dalam bentuk XML berdasarkan id tertentu
-   `show_json_by_id` --> menampilkan data dalam bentuk JSON berdasarkan id tertentu
+3. Memodifikasi `views.py` dengan menambahkan fungsi-fungsi yang dibutuhkan. Fungsi dalam `views.py`
+
+- `show_main` --> menampilkan data `Item` melalui _form_
+- `create_product`
+- `show_html` --> menampilkan data dalam bentuk HTML
+- `show_xml` --> menampilkan data dalam bentuk XML
+- `show_json` --> menampilkan data dalam bentuk JSON
+- `show_xml_by_id` --> menampilkan data dalam bentuk XML berdasarkan id tertentu
+- `show_json_by_id` --> menampilkan data dalam bentuk JSON berdasarkan id tertentu
 
 4. Melakukan routing dengan mengimpor fungsi-fungsi yang ada pada `views.py` dalam `urls.py` yang terdapat pada `main` folder. Kemudian, menambahkan _path url_ untuk setiap fungsi dalam `urls.py`. Hal ini bertujuan untuk mengakses fungsi-fungsi yang sudah diimport sebelumnya.
 
