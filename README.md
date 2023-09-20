@@ -97,6 +97,7 @@ class ProductForm(ModelForm):
 
 <details>
 <summary> Tugas 2 </summary>
+
 ## 1. Cara Implementasi
 
 1. Memilih direktori lokal yang akan menyimpan proyek Git dan melakukan inisiasi repositori baru dengan berintah `git init`.
