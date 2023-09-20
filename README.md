@@ -35,9 +35,11 @@ HTML digunakan untuk mengirimkan tampilan halaman web, dapat diibaratkan seperti
 
 ## Cara Implementasi
 
-1. Membuat direktori `templates` di _root folder_. Di dalam folder tersebut, saya menambahkan `base.html` sebagai template.
+1. Mengaktifkan _virtual environment_: `env\Scripts\activate.bat`
 
-2. Membuat `_form_s.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur input _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
+2. Membuat direktori `templates` di _root folder_. Di dalam folder tersebut, saya menambahkan `base.html` sebagai template.
+
+3. Membuat `_form_s.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur input _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
 
 ```
 from django.forms import ModelForm
@@ -49,7 +51,7 @@ class ProductForm(ModelForm):
         fields = ["name", "amount", "description"]
 ```
 
-3. Memodifikasi `views.py` dengan menambahkan fungsi-fungsi yang dibutuhkan. Fungsi dalam `views.py`
+4. Memodifikasi `views.py` dengan menambahkan fungsi-fungsi yang dibutuhkan. Fungsi dalam `views.py`
 
 - `show_main` --> menampilkan data `Item` melalui _form_
 - `create_product` --> mengelola pembuatan produk
@@ -59,11 +61,11 @@ class ProductForm(ModelForm):
 - `show_xml_by_id` --> menampilkan data dalam bentuk XML berdasarkan id tertentu
 - `show_json_by_id` --> menampilkan data dalam bentuk JSON berdasarkan id tertentu
 
-4. Melakukan routing dengan mengimpor fungsi-fungsi yang ada pada `views.py` dalam `urls.py` yang terdapat pada `main` folder. Kemudian, menambahkan _path url_ untuk setiap fungsi dalam `urls.py`. Hal ini bertujuan untuk mengakses fungsi-fungsi yang sudah diimport sebelumnya.
+5. Melakukan routing dengan mengimpor fungsi-fungsi yang ada pada `views.py` dalam `urls.py` yang terdapat pada `main` folder. Kemudian, menambahkan _path url_ untuk setiap fungsi dalam `urls.py`. Hal ini bertujuan untuk mengakses fungsi-fungsi yang sudah diimport sebelumnya.
 
-5. Membuat berkas `create_product.html` di `main/templates`, seperti pada tutorial.
+6. Membuat berkas `create_product.html` di `main/templates`, seperti pada tutorial.
 
-6. Memodifikasi `main.html` pada `main/templates` untuk menampilkan data produk dalam bentuk table dan menambahkan tombol `Add New Product` yang akan _redirect_ ke halaman _form_.
+7. Memodifikasi `main.html` pada `main/templates` untuk menampilkan data produk dalam bentuk table dan menambahkan tombol `Add New Product` yang akan _redirect_ ke halaman _form_.
 
 ## Screenshots Postman
 
