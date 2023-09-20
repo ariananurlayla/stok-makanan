@@ -15,13 +15,13 @@ Method `GET` merupakan method protokol HTTP untuk mengambil data dari server. Be
 
 #### XML (eXtensible Markup Language)
 
-XML digunakan untuk mengorganisir data dalam hierarki yang terstruktur, seperti mengorganisir berkas dalam folder dan subfolder komputer. Tag pembuka dan penutup yang mendefinisikan elemen dan atribut (sintaks XML dapat dianalogikan seperti HTML yang menyimpan data dalam bentuk tree node), memungkinkan fleksibilitas dalam mendefinisikan \_form_at data yang sesuai dengan kebutuhan aplikasi.
+XML digunakan untuk mengorganisir data dalam hierarki yang terstruktur, seperti mengorganisir berkas dalam folder dan subfolder komputer. Tag pembuka dan penutup yang mendefinisikan elemen dan atribut (sintaks XML dapat dianalogikan seperti HTML yang menyimpan data dalam bentuk tree node), memungkinkan fleksibilitas dalam mendefinisikan format data yang sesuai dengan kebutuhan aplikasi.
 
 - XML biasanya digunakan untuk data yang perlu diorganisir dengan struktur yang kompleks karena menggunakan tag pada setiap elemen data. Contoh penggunaannya, seperti konfigurasi aplikasi atau pertukaran data antarsistem yang berbeda.
 
 #### JSON (JavaScript Object Notation)
 
-JSON digunakan untuk menyimpan data dalam \_form_at objek dengan pasangan `key-value`, seperti \_form_at daftar kontak di ponsel. Fomat yang relatif singkat dan intuitif tersebut memudahkan manusia dalam membaca dan memahaminya.
+JSON digunakan untuk menyimpan data dalam format objek dengan pasangan `key-value`, seperti format daftar kontak di ponsel. Fomat yang relatif singkat dan intuitif tersebut memudahkan manusia dalam membaca dan memahaminya.
 
 - JSON cocok untuk pertukaran data dalam pengembangan web karena sederhana, ringkas, dan relatif mudah di-parsing. JSON menggunakan `dictionary` dan `list` sebagai _container_ sehingga mudah dibaca oleh mesin juga. Data dikirim dalam bentuk JavaScript sehingga lebih mudah dimanipulasi sehingga JSON sering digunakan.
 
@@ -31,7 +31,7 @@ HTML digunakan untuk mengirimkan tampilan halaman web, dapat diibaratkan seperti
 
 ## Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
 
-`JSON` sering digunakan karena penyajian data yang lebih sederhana dari `XML` sehingga lebih efisien. Ditambah, \_form_at ini lebih mudah dibaca oleh manusia dan mesin, seperti yang telah disebutkan sebelumnya.
+`JSON` sering digunakan karena penyajian data yang lebih sederhana dari `XML` sehingga lebih efisien. Ditambah, format ini lebih mudah dibaca oleh manusia dan mesin, seperti yang telah disebutkan sebelumnya.
 
 ## Cara Implementasi
 
