@@ -46,6 +46,8 @@ Penggunaan cookies belum tentu aman secara default. Cookies disimpan/dikirimkan 
 10. Menjawab pertanyaan-pertanyaan pada Tugas 4.
 
 <details>
+
+<details>
 <summary> Tugas 3 </summary>
 
 ## Perbedaan antara _form_ `POST`dan `GET` dalam Django
