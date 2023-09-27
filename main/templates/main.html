@@ -1,60 +1,72 @@
 {% extends 'base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block meta %}
-    {% endblock %}
-</head>
-<body>
-    {% block content %}
-    <h1>Stok Makanan Page</h1>
-    <hr>
 
-    <h3>Name: {{ name }}</h3>
-    <h3>Class: {{ class }}</h3>
+{% block content %}
+<h1>Stok Makanan</h1>
 
-    <hr>
+<h3>Name: {{name}}</h3>
+<h3>Class: {{class}}</h3>
 
-    <h2>Stok Tersedia</h2>
+<hr>
+<h3>Stok yang tersedia adalah sebagai berikut:</h3>
 
-    <hr>
+<style>
+    .table-header {
+        text-align: center;
+    }
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-        </tr>
+    .amount-button {
+        text-align: center; 
+    }
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    table {
+        text-align: center;
+    }
 
-        {% for item in items %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.amount }}</td>
-            <td>{{ item.description }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br />
+    /* Memberikan warna latar belakang bergantian pada baris */
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Warna latar belakang untuk baris genap */
+    }
 
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Item
-        </button>
-    </a>
+    tr:nth-child(odd) {
+        background-color: #ffffff; /* Warna latar belakang untuk baris ganjil */
+    }
+</style>
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+<table>
+    <tr>
+        <th class="table-header">Name</th>
+        <th class="table-header">Amount</th>
+        <th class="table-header">Description</th>
+    </tr>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-    
-    {% endblock %}
-</body>
-</html>
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>
+            {{ item.amount }}
+            <a href="increase/{{item.pk}}/" class="amount-button"><button>+</button></a>
+            <a href="decrease/{{item.pk}}/" class="amount-button"><button>-</button></a>
+            <a href="remove_all/{{item.pk}}/" class="amount-button"><button>Delete</button></a>
+        </td>
+        <td>{{ item.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Item
+    </button>
+</a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+
+{% endblock %}

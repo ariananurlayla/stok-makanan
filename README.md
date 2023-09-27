@@ -3,6 +3,49 @@
 # [stok-makanan](https://stok-nyamnyam.adaptable.app/)
 
 <details>
+<summary> Tugas 4 </summary>
+
+## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+`UserCreationForm` adalah formulir bawaan yang memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. Form ini meng-handle informasi yang dibutuhkan dalam proses pembuatan _user_ sehingga _programmer_ tidak perlu membuat kode dari awal. Kelebihan dari `UserCreationForm` adalah menyediakan formulir bawaan yang memudahkan pembuatan _user_ baru dengan validasi otomatis sehingga akan menghemat waktu pemrograman. Namun, kekurangannya adalah kurangnya fleksibilitas untuk disesuaikan sepenuhnya dengan kebutuhan formulir registrasi yang kompleks.
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+`Autentikasi` adalah proses verifikasi identitas pengguna yang mencoba mengakses sistem. Contoh: proses _login_.
+
+`Otorisasi` adalah proses pengecekan izin terhadap sumber daya yang dapat diakses oleh pengguna yang sedang diotentikasi. Contoh: perbedaan sumber daya yang dapat diakses oleh roles Asdos dan Mahasiswa dalam sebuah server Discord suatu mata kuliah karena ada batasan yang telah ditentukan.
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Cookies adalah penyimpanan data informasi dari aplikasi web. Informasi yang disimpan, seperti sesi, preferensi, atau identifikasi pengguna. Identifier unik dari pengguna ini akan disimpan dan diolah oleh Django menggunakan cookies. Cookies akan mengirimkan identifier ke perangkat yang digunakan oleh pengguna saat mereka mengakses aplikasi web. Identifier digunakan untuk mengaitkan pengguna dengan data sesi yang mereka miliki pada server.
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Penggunaan cookies belum tentu aman secara default. Cookies disimpan/dikirimkan ke perangkat pengguna sehingga pihak yang memiliki akses terhadap perangkat tersebut juga dapat mengakses cookies yang ada di dalamnya. Cookies dapat dicuri atau disadap jika tidak dienkripsi dengan baik. Selain itu, terdapat ancaman lain yang mungkin muncul dari penggunaan cookies dalam pengembangan web. Salah satunya adalah CSRF (_Cross-Site Request Forgery_).
+
+## Cara Implementasi
+
+1. Mengaktifkan _virtual environment_: `env\Scripts\activate.bat`
+
+2. Membuat form dan fungsi register, login, serta logout pada `views.py`. Kemudian, melakukan _routing_ pada `urls.py` dengan mengimpor fungsi-fungsi yang digunakan dan menambahkan path url.
+
+3. UserCreationForm membantu membuat formulir registrasi dan akun pengguna dalam aplikasi web ketika data form di-submit. Dilakukan validasi input form tersebut. Jika sesuai, maka data yang diperoleh dari form akan disimpan dan mengarahkan pengguna ke halaman login.
+
+4. Membuat `register.html` dan `login.html` seperti yang diajarkan pada tutorial.
+
+5. Pada proses _login_, program meminta input username dan password untuk kemudian dilakukan autentikasi. Jika autentikasi berhasil, akan dilakukan proses _login_ dan mengarahkan pengguna ke halaman main. Saya juga menambahkan restriksi agar halaman main hanya bisa diakses oleh pengguna yang sudah login dengan decorator `login_required`.
+
+6. Pada proses logout, data cookie last_login pengguna akan dihapus dan pengguna dikembalikan ke halaman login.
+
+7. Menambahkan tombol-tombol pada `main.html`, seperti tombol _logout_, _add new item_, mengurangi kuantitas item, menambah kuantitas item, dan menghapus suatu item.
+
+8. Menjalankan server dengan `python manage.py runserver` dan membuat akun dengan username 'Ariana'. Kemudian, menghubungkan model `Item` dan `User`.
+
+9. Melakukan migrasi dan mencoba mengakses halaman web yang telah dibuat.
+
+10. Menjawab pertanyaan-pertanyaan pada Tugas 4.
+
+<details>
 <summary> Tugas 3 </summary>
 
 ## Perbedaan antara _form_ `POST`dan `GET` dalam Django

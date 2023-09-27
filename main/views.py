@@ -1,13 +1,11 @@
 import datetime
-from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from main.forms import ProductForm
-from main.models import Item
+from django.http import HttpResponseRedirect, HttpResponse
+from main.forms import ProductForm, Item
+from django.urls import reverse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
+from django.contrib import messages  
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -17,10 +15,9 @@ def show_main(request):
     items = Item.objects.filter(user=request.user)
     jumlah_item = len(items)
     context = {
-        'nama': request.user.username,
-        'kelas': 'PBP C',
+        'name': request.user.username,
+        'class': 'PBP C',
         'items': items,
-        'jumlah_item': jumlah_item,
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -30,7 +27,9 @@ def create_product(request):
     form = ProductForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        form.save()
+        product = form.save(commit=False)
+        product.user = request.user
+        product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
@@ -89,15 +88,6 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
-
-def create_product(request):
-    form = ProductForm(request.POST or None)
-
-    if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
-        product.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
     
 def increase(request, id):
     item = Item.objects.get(pk=id)
