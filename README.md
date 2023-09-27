@@ -29,21 +29,23 @@ Penggunaan cookies belum tentu aman secara default. Cookies disimpan/dikirimkan 
 
 2. Membuat form dan fungsi register, login, serta logout pada `views.py`. Kemudian, melakukan _routing_ pada `urls.py` dengan mengimpor fungsi-fungsi yang digunakan dan menambahkan path url.
 
-3. UserCreationForm membantu membuat formulir registrasi dan akun pengguna dalam aplikasi web ketika data form di-submit. Dilakukan validasi input form tersebut. Jika sesuai, maka data yang diperoleh dari form akan disimpan dan mengarahkan pengguna ke halaman login.
+3. UserCreationForm membantu membuat formulir registrasi dan akun pengguna dalam aplikasi web ketika data form di-submit. Dilakukan validasi _input_ form tersebut. Jika sesuai, maka data yang diperoleh dari form akan disimpan dan mengarahkan pengguna ke halaman login.
 
 4. Membuat `register.html` dan `login.html` seperti yang diajarkan pada tutorial.
 
-5. Pada proses _login_, program meminta input username dan password untuk kemudian dilakukan autentikasi. Jika autentikasi berhasil, akan dilakukan proses _login_ dan mengarahkan pengguna ke halaman main. Saya juga menambahkan restriksi agar halaman main hanya bisa diakses oleh pengguna yang sudah login dengan decorator `login_required`.
+5. Pada proses _login_, program meminta _input_ username dan password untuk kemudian dilakukan autentikasi. Jika autentikasi berhasil, akan dilakukan proses _login_ dan mengarahkan pengguna ke halaman main. Saya juga menambahkan restriksi agar halaman main hanya bisa diakses oleh pengguna yang sudah _login_ dengan _decorator_ `login_required`.
 
-6. Pada proses logout, data cookie last_login pengguna akan dihapus dan pengguna dikembalikan ke halaman login.
+6. Pada proses _logout_, data cookie `last_login` pengguna akan dihapus dan pengguna dikembalikan ke halaman login.
 
 7. Menambahkan tombol-tombol pada `main.html`, seperti tombol _logout_, _add new item_, mengurangi kuantitas item, menambah kuantitas item, dan menghapus suatu item.
 
-8. Menjalankan server dengan `python manage.py runserver` dan membuat akun dengan username 'Ariana'. Kemudian, menghubungkan model `Item` dan `User`.
+8. Untuk menampilkan detail informasi, saya menambahkan `response.set_cookie('last_login', str(datetime.datetime.now()))` dalam _dictionary context function_ `show_main` yang di-pass ke `main.html` untuk informasinya dirender. Saya juga mengubah _value_ dari `name` dalam _dictionary context function_ `show_main` untuk mengirimkan _username_ dari pengguna yang sedang _login_.
 
-9. Melakukan migrasi dan mencoba mengakses halaman web yang telah dibuat.
+9. Menjalankan server dengan `python manage.py runserver` dan membuat akun dengan username 'Ariana'. Kemudian, menghubungkan model `Item` dan `User`.
 
-10. Menjawab pertanyaan-pertanyaan pada Tugas 4.
+10. Melakukan migrasi dan mencoba mengakses halaman web yang telah dibuat.
+
+11. Menjawab pertanyaan-pertanyaan pada Tugas 4.
 
 </details>
 
@@ -84,7 +86,7 @@ HTML digunakan untuk mengirimkan tampilan halaman web, dapat diibaratkan seperti
 
 2. Membuat direktori `templates` di _root folder_. Di dalam folder tersebut, saya menambahkan `base.html` sebagai template.
 
-3. Membuat `_form_s.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur input _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
+3. Membuat `_form_s.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur _input_ _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
 
 ```
 from django.forms import ModelForm
