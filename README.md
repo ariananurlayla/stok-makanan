@@ -7,7 +7,7 @@
 
 ## Manfaat dari setiap element selector dan waktu yang tepat untuk menggunakannya
 
-- Element selector memungkinkan kita untuk mengubah properti untuk semua elemen dengan tag yang sama. Tepat digunakan jika ingin menerapkan style/gaya umum dari semua elemen dengan jenis yang sama. Contoh, memodifikasi semua '<h1>' atau judul level 1.
+- Element selector memungkinkan kita untuk mengubah properti untuk semua elemen dengan tag yang sama. Tepat digunakan jika ingin menerapkan style/gaya umum dari semua elemen dengan jenis yang sama. Contoh, memodifikasi semua `<h1>` atau judul level 1.
 
 ```
 h1 {
