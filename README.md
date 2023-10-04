@@ -3,6 +3,69 @@
 # [stok-makanan](https://stok-nyamnyam.adaptable.app/)
 
 <details>
+<summary> Tugas 5 </summary>
+
+## Manfaat dari setiap element selector dan waktu yang tepat untuk menggunakannya
+
+- Element selector memungkinkan kita untuk mengubah properti untuk semua elemen dengan tag yang sama. Tepat digunakan jika ingin menerapkan style/gaya umum dari semua elemen dengan jenis yang sama. Contoh, memodifikasi semua '<h1>' atau judul level 1.
+
+```
+h1 {
+    font-size: 24px;
+    color: #ff0000;
+}
+```
+
+- ID selector digunakan untuk memilih elemen tertentu dengan atribut ID yang bersifat unik sehingga memungkinkan pemilihan elemen yang spesifik.
+
+```
+#header {
+  background-color: #f0f0f0;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px;
+}
+```
+
+- Class selector memungkinkan kita untuk memilih elemen berdasarkan class tertentu. Contohnya dapat digunakan untuk mengelompokkan elemen dengan karakteristik serupa untuk menerapkan gaya secara bersamaan.
+
+```
+.content_section {
+  background-color: #3696e1;
+  margin-bottom: 30px;
+  color: #000000;
+  font-family: cursive;
+  padding: 20px 20px 20px 40px;
+}
+```
+
+## HTML5 Tag
+
+- `<title>` -> untuk judul web
+- `<body>` -> untuk bagian isi dari web
+- `<header>` -> untuk mengelompokkan elemen-elemen yang berada di bagian atas halaman atau bagian dari suatu konten.
+- `<tr>` -> mendefinisikan setiap baris dalam tabel
+- `<td>` -> mendefinisikan sel data yang merupakan konten utama dalam tabel. Sel berada di dalam baris
+- `<button>` -> untuk membuat tombol
+- `<h1> <h2> <h3> dst` -> untuk membuat header
+- `<p>` -> untuk membuat paragraf
+- `<br>` -> memasukan satu break line
+
+## Perbedaan Margin dan Padding
+
+- Margin: digunakan untuk mengatur jarak antara elemen dengan elemen lain di sekitarnya. Margin tidak mempunyai warna background dan atribut visual lain.
+- Padding: digunakan untuk mengatur jarak antara isi konten dengan batas tepi elemen. Padding dapat memiliki warna latar belakang yang sama dengan elemen tersebut, sehingga bagian padding akan berwarna sesuai dengan elemen tersebut.
+
+## Perbedaan antara framework CSS Tailwind dan Bootstrap
+
+Bootstrap tepat digunakan jika ingin mempercepat proses dan konsistensi desain yang telah didefinisikan sebelumnya, tetapi kurang fleksibel. Jika dibutuyhkan fleksibilitas lebih dalam proses design, Tailwind mungkin lebih baik untuk dipilih. Bootstrap memiliki banyak komponen built in yang siap untuk digunakan. Di sisi lain, Tailwind menyediakan komponen yang lebih mendasar sehingga mungkin akan memerlukan kustomisasi dalam pemanfaatannya.
+
+## Cara Implementasi Kostumisasi Desain
+
+Saya melakukan proses desain pada HTML sesuai kebutuhan dari masing-masing file. Saya menggunakan CSS biasa dengan internal style sheet. Kemudian, saya membuat navbar dengan melakukan penyesuaian sesuai kebutuhan saya, saya menggunakan template navbar dari website Bootstrap yang disediakan pada tutorial.
+
+</details>
+
+<details>
 <summary> Tugas 4 </summary>
 
 ## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?

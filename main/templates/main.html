@@ -1,72 +1,89 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Stok Makanan</h1>
-
-<h3>Name: {{name}}</h3>
-<h3>Class: {{class}}</h3>
-
-<hr>
-<h3>Stok yang tersedia adalah sebagai berikut:</h3>
-
 <style>
-    .table-header {
-        text-align: center;
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    .amount-button {
-        text-align: center; 
+    table, th, td {
+        /* border: 1px solid black; */
+        padding: 10px;
+        table-layout: auto;
     }
-
-    table {
-        text-align: center;
+    h5, a {
+        margin-left: 20px;
     }
-
-    /* Memberikan warna latar belakang bergantian pada baris */
-    tr:nth-child(even) {
-        background-color: #f2f2f2; /* Warna latar belakang untuk baris genap */
+    .action-buttons {
+        display: flex;
+        align-items: center;
     }
-
-    tr:nth-child(odd) {
-        background-color: #ffffff; /* Warna latar belakang untuk baris ganjil */
+    .action-buttons a {
+        margin-right: 10px;
     }
+    /* Mengganti warna baris terakhir tabel --> tapi kok ga bisa ya :D*/
+    .inventory-item:last-child {
+    background-color: rgb(135, 51, 51);
+}
 </style>
 
-<table>
-    <tr>
-        <th class="table-header">Name</th>
-        <th class="table-header">Amount</th>
-        <th class="table-header">Description</th>
-    </tr>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #45a049;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="font-size: 30px; color: white;">Stok Makanan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="font-size: 18px; color: rgb(102, 186, 29);">Inventory</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px; color: white;">
+            Hi, {{name}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'main:profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">My inventory</a></li>
+            <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
+            </ul>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for item in items %}
-    <tr>
-        <td>{{ item.name }}</td>
-        <td>
-            {{ item.amount }}
-            <a href="increase/{{item.pk}}/" class="amount-button"><button>+</button></a>
-            <a href="decrease/{{item.pk}}/" class="amount-button"><button>-</button></a>
-            <a href="remove_all/{{item.pk}}/" class="amount-button"><button>Delete</button></a>
-        </td>
-        <td>{{ item.description }}</td>
-    </tr>
-    {% endfor %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr class="inventory-item">
+            <td>{{ item.name }}</td>
+            <td class="action-buttons">
+                {{ item.amount }}
+                <a href="increase/{{item.pk}}/" class="btn btn-success"><button>+</button></a>
+                <a href="decrease/{{item.pk}}/" class="btn btn-danger"><button>-</button></a>
+                <a href="remove_all/{{item.pk}}/" class="btn btn-warning"><button>Delete</button></a>
+            </td>
+            <td>{{ item.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Item
-    </button>
+<a href="{% url 'main:create_product' %}" class="btn btn-primary">
+    Add New Item
 </a>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
+<a href="{% url 'main:logout' %}" class="btn btn-danger">
+    Logout
 </a>
 
 {% endblock %}

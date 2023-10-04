@@ -6,40 +6,102 @@
 
 {% block content %}
 
-<div class = "login">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ganti dengan font yang Anda inginkan */
+    }
 
+    .login {
+        width: 80%;
+        max-width: 400px;
+        padding: 40px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .login h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .login input[type="text"],
+    .login input[type="password"] {
+        width: calc(100% - 30px);
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .login .login_btn {
+        width: 100%;
+        background-color: #4caf50;
+        color: #fff;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+
+    .login .login_btn:hover {
+        background-color: #45a049;
+    }
+
+    .login ul {
+        list-style: none;
+        color: #ff0000;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .login a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .login a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="login">
     <h1>Login</h1>
-
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <div style="margin-bottom: 20px;">
+            <input type="text" name="username" placeholder="Username">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input class="login_btn" type="submit" value="Login">
+        </div>
     </form>
-
     {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
-
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div>
+        Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    </div>
 </div>
 
 {% endblock content %}

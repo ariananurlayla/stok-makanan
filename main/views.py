@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 
 def show_main(request):
     items = Item.objects.filter(user=request.user)
-    jumlah_item = len(items)
+    # jumlah_item = len(items)
     context = {
         'name': request.user.username,
         'class': 'PBP C',
@@ -22,6 +22,16 @@ def show_main(request):
     }
 
     return render(request, "main.html", context)
+
+def profile(request):
+    # items = Item.objects.filter(user=request.user)
+    context = {
+        'name': request.user.username,
+        'class': 'PBP C',
+        'last_login': request.COOKIES['last_login'],
+    }
+
+    return render(request, "profile.html", context)
 
 def create_product(request):
     form = ProductForm(request.POST or None)

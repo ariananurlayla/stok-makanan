@@ -6,29 +6,114 @@
 
 {% block content %}  
 
-<div class = "login">
-    
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Gunakan font serupa dengan halaman login */
+    }
+
+    .login {
+        width: 80%;
+        max-width: 400px;
+        padding: 40px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .login h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .login input[type="text"],
+    .login input[type="password"] {
+        width: calc(100% - 30px);
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .login input[type="submit"] {
+        width: calc(100% - 30px);
+        background-color: #4caf50;
+        color: #fff;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+
+    .login input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .login ul {
+        list-style: none;
+        color: #ff0000;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .info {
+        font-size: 14px;
+        color: #666;
+        margin-top: 3px;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+</style>
+
+<div class="login">
     <h1>Register</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
+    <form method="POST" >  
+        {% csrf_token %}  
+        <div style="margin-bottom: 20px;">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            <div class="info">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+            <div class="info">Your password can’t be too similar to your other personal information.<br>
+                Your password must contain at least 8 characters.<br>
+                Your password can’t be a commonly used password.<br>
+                Your password can’t be entirely numeric.</div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="{{ form.password2.id_for_label }}">Password Confirmation:</label>
+            {{ form.password2 }}
+            <div class="info">Enter the same password as before, for verification.</div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input type="submit" name="submit" value="Daftar">
+        </div>
+    </form>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
-
 </div>  
 
 {% endblock content %}
