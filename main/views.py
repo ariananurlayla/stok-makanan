@@ -1,23 +1,29 @@
-import datetime
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from main.forms import ProductForm, Item
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+from main.forms import ItemForm
 from django.urls import reverse
+from main.models import Item
+from django.http import HttpResponse
 from django.core import serializers
+from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 @login_required(login_url='/login')
 
 def show_main(request):
     items = Item.objects.filter(user=request.user)
-    # jumlah_item = len(items)
+    banyak_items = len(items)
     context = {
         'name': request.user.username,
         'class': 'PBP C',
         'items': items,
+        'banyak_items' : banyak_items,
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -34,7 +40,7 @@ def profile(request):
     return render(request, "profile.html", context)
 
 def create_product(request):
-    form = ProductForm(request.POST or None)
+    form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
         product = form.save(commit=False)
@@ -44,6 +50,24 @@ def create_product(request):
 
     context = {'form': form}
     return render(request, "create_product.html", context)
+
+def get_item_json(request):
+    item = Item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', item))
+
+@csrf_exempt
+def create_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, description=description, user=user)
+        new_item.save()
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
 
 def show_html(request):
     data = Item.objects.all()

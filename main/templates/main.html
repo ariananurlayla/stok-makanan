@@ -1,89 +1,339 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        color: #fff;
+        padding: 10px 20px;
+        margin-bottom: 40px; /* Atur jarak vertikal antara navbar dan konten di bawahnya */
+        font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     }
-    table, th, td {
-        /* border: 1px solid black; */
-        padding: 10px;
-        table-layout: auto;
-    }
-    h5, a {
-        margin-left: 20px;
-    }
-    .action-buttons {
+
+    .navbar-left {
         display: flex;
         align-items: center;
     }
-    .action-buttons a {
+
+    .navbar h1 {
+        font-size: 24px;
+        margin: 0;
+        color: #000; /* Warna teks hitam */
+        margin-right: 20px; /* Memberi jarak kanan antara "Stok Makanan" dengan tombol */
+    }
+
+    /* Mengatur tampilan button pada navbar */
+    .navbar-button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
         margin-right: 10px;
     }
-    /* Mengganti warna baris terakhir tabel --> tapi kok ga bisa ya :D*/
-    .inventory-item:last-child {
-    background-color: rgb(135, 51, 51);
-}
+
+    /* Mengatur tampilan teks nama dan kelas */
+    .navbar-info p {
+        margin: 0;
+        color: #000;
+    }
+
+    .navbar-right {
+        display: flex;
+        align-items: center;
+        text-align: right;
+    }
+
+    /* Mengatur tampilan teks nama dan kelas */
+    .navbar-right p {
+        margin-right: 10px; /* Memberi jarak antara nama, kelas, dan tombol */
+        color: #000; /* Warna teks nama dan kelas menjadi hitam */
+    }
+
+    /* Mengatur tampilan nama/username menjadi bold */
+    .bold-font {
+        font-weight: bold;
+    }
+
+    /* Mengatur font style untuk "Bookstore Inventory" */
+    .custom-font-nama-toko {
+        font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        font-size: 24px;
+        margin: 0;
+        color: #000;
+        margin-right: 20px;
+    }
+
+    /* Mengatur font style ke semua tulisan kecuali "Bookstore" */
+    *:not(.custom-font-nama-toko) {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        overflow-y: auto;
+    }
+    
+    .card {
+        flex-direction: row;
+        float: left;
+        margin: 20px;
+        margin-top: 0;
+    }
+
+
+    .container-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    table {
+      width: 95%; /* Adjust the width as needed */
+      margin: 0 auto; /* Center the table horizontally */
+    }
+
+    
+    button {
+        display: inline-block;
+        color: #252537;
+      
+        padding: 0 10px;
+        background: #ffd9d5;
+        border-radius: 5px;
+        
+        outline: none;
+        border: none;
+      
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s linear;
+        
+        margin: 7% auto; 
+        letter-spacing: 0.05em;
+    } 
+
+    .centered-button {
+        justify-content: center;
+        align-items: center;
+        margin: 7% auto;
+    }
+    
+    /* buttons hover */
+    button:hover {
+        transform: translatey(3px);
+        box-shadow: none;
+    }
+    
+    /* buttons hover Animation */
+    button:hover {
+        animation: ani9 0.4s ease-in-out infinite alternate;
+    }
+    @keyframes ani9 {
+        0% {
+            transform: translateY(3px);
+        }
+        100% {
+            transform: translateY(5px);
+        }
+    } 
+
+    th, td {
+        padding: 5px;
+        font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* tambahkan baris ini */
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #45a049;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="font-size: 30px; color: white;">Stok Makanan</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" style="font-size: 18px; color: rgb(102, 186, 29);">Inventory</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px; color: white;">
-            Hi, {{name}}!
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'main:profile' %}">Profile</a></li>
-            <li><a class="dropdown-item" href="#">My inventory</a></li>
-            <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
-            </ul>
-        </li>
-        </ul>
+<nav class="navbar">
+    <!-- Mengatur navbar bagian kiri -->
+    <div class="navbar-left">
+        <h1 class="custom-font-nama-toko">Stok Makanan</h1>
+        <a href="{% url 'main:create_product' %}">
+            <button class="navbar-button">Add New Product</button>
+        </a>
     </div>
+    <!-- Mengatur navbar bagian kanan -->
+    <div class="navbar-right">
+        <div class="navbar-info">
+            <p>Hi, <span class="bold-font">{{name}}</span>!</p>
+            <p>{{class}}</p>
+            <p>Sesi terakhir login: {{last_login}}</p>
+        </div>
+        <a href="{% url 'main:logout' %}">
+            <button class="navbar-button">Logout</button>
+        </a>
     </div>
 </nav>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Description</th>
+<body>
+<div class="container-body">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add New Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- <h1 align="center">Stok Makanan</h1>
+        <br> -->
+
+        <!-- <h3 align="center">Name: {{name}}</h3> -->
+        <!-- <p align="center">{{name}}</p> -->
+        <!-- <br> -->
+
+        <!-- <h3 align="center">Class: {{class}}</h3> -->
+        <!-- <p align="center">{{class}}</p> -->
+        <!-- <br> -->
+
+    <div id="item_card"></div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Item by AJAX</button>
+
+    <table class="table table-bordered text-center" width="1200">
+        <caption><h3>Ada {{banyak_items}} jenis makanan yang kamu simpan! Mau makan apa hari ini?</h3></caption>
+        <tr bgcolor="#7CA1D9">
+            <th width="100">Name</th>
+            <th width="100">Amount</th>
+            <th width="800">Description</th>
         </tr>
-    </thead>
-    <tbody>
         {% for item in items %}
-        <tr class="inventory-item">
-            <td>{{ item.name }}</td>
-            <td class="action-buttons">
-                {{ item.amount }}
-                <a href="increase/{{item.pk}}/" class="btn btn-success"><button>+</button></a>
-                <a href="decrease/{{item.pk}}/" class="btn btn-danger"><button>-</button></a>
-                <a href="remove_all/{{item.pk}}/" class="btn btn-warning"><button>Delete</button></a>
-            </td>
-            <td>{{ item.description }}</td>
-        </tr>
+            <tr bgcolor="#BEC3EA">
+                <td>{{item.name}}</td>
+                <td>
+                    <table class="text-center" width="100">
+                        <th width="40">{{item.amount}}</th>
+                        <th width="40">
+                            <a href="/increase/{{item.pk}}/">
+                                <button class="custom-button">+</button>
+                            </a><br>
+                            <a href="/decrease/{{item.pk}}/">
+                                <button class="custom-button">-</button>
+                            </a>
+                        </th>
+                    </table>
+                </td>
+                <td>{{item.description}}</td>
+                <td>
+                    <a href="/remove_all/{{item.pk}}/">
+                        <button class="custom-button">Eat it</button>
+                    </a>
+                </td>
+            </tr>
         {% endfor %}
-    </tbody>
-</table>
+    </table>
+    
+    <br>
 
-<a href="{% url 'main:create_product' %}" class="btn btn-primary">
-    Add New Item
-</a>
+    <a href="{% url 'main:create_product' %}">
+        <button class="centered-button">
+            Add New Item
+        </button>
+    </a>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+    <h5 align="center">Sesi terakhir login: {{ last_login }}</h5>
 
-<a href="{% url 'main:logout' %}" class="btn btn-danger">
-    Logout
-</a>
+    <a href="{% url 'main:logout' %}">
+        <button class="centered-button">
+            Logout
+        </button>
+    </a>
 
-{% endblock %}
+</body>
+
+    <script>
+        async function getItems() {
+            return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+        }
+        
+        async function refreshItems() {
+            document.getElementById("item_card").innerHTML = ""
+            const items = await getItems()
+            let htmlString = ""
+            items.forEach((item) => {
+                htmlString += `<div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">${item.fields.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Amount : ${item.fields.amount}</h6>
+                    <p class="card-text">${item.fields.description}</p>
+                    <a href="/increase/${item.pk}/">
+                        <button class="custom-button">
+                            +
+                        </button>
+                    </a>
+                    <a href="/decrease/${item.pk}/">
+                        <button class="custom-button">
+                            -
+                        </button>
+                    </a>
+                    <a href="/remove_all/${item.pk}/">
+                        <button class="custom-button">
+                            Eat it
+                        </button>
+                    </a>
+                    </div>
+                </div>` 
+            })
+            
+            document.getElementById("item_card").innerHTML = htmlString
+        }
+
+        refreshItems()
+
+        function addItem() {
+            fetch("{% url 'main:create_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+        document.getElementById("button_add").onclick = addItem
+    </script>
+</div>
+
+{% endblock content %}

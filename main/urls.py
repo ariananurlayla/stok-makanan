@@ -1,7 +1,7 @@
 from django.urls import path
 from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
 from main.views import register, login_user, logout_user
-from main.views import increase, decrease, remove_all, profile
+from main.views import increase, decrease, remove_all, profile, get_item_json, create_ajax
 
 app_name = 'main'
 
@@ -19,4 +19,6 @@ urlpatterns = [
     path('decrease/<int:id>/', decrease, name='decrease'),
     path('remove_all/<int:id>/', remove_all, name='remove_all'),
     path('profile/', profile, name="profile"),
+    path('get-item/', get_item_json, name='get_item_json'),
+    path('create-ajax/', create_ajax, name='create_ajax')
 ]
