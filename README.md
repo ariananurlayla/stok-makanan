@@ -3,6 +3,114 @@
 # [stok-makanan](https://stok-nyamnyam.adaptable.app/)
 
 <details>
+<summary> Tugas 6 </summary>
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+Synchronous programming menjalankan tugas satu per satu secara berurutan dan menunggu setiap tugas selesai sebelum melanjutkan ke tugas berikutnya. Asynchronous programming memungkinkan beberapa tugas berjalan bersamaan tanpa harus menunggu tugas sebelumnya selesai. Ini membuat program tetap responsif dan efisien saat menangani operasi-operasi yang membutuhkan waktu lama, seperti I/O atau panggilan jaringan.
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+Paradigma event-driven programming adalah pendekatan dalam pengembangan perangkat lunak di mana program merespons peristiwa atau kejadian yang terjadi. Dalam konteks JavaScript dan AJAX, program merespons peristiwa-peristiwa tertentu, seperti klik tombol atau pembaruan data dari server, tanpa harus menunggu operasi selesai secara sinkron.
+
+```
+        function addItem() {
+            fetch("{% url 'main:create_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+        document.getElementById("button_add").onclick = addItem <----- event listener onclick pada button dengan id button_add yang akan memanggil function addItem() bila ada event ditekan
+```
+
+## Jelaskan penerapan asynchronous programming pada AJAX.
+
+AJAX (Asynchronous JavaScript and XML) memungkinkan browser berkomunikasi dengan server secara asynchronous, artinya halaman web dapat mengirim atau menerima data dari server tanpa harus me-refresh atau menghentikan eksekusi kode JavaScript utama. Dengan menggunakan teknik ini, aplikasi web dapat tetap responsif dan interaktif, memungkinkan pengguna berinteraksi dengan halaman web tanpa harus menunggu waktu lama untuk pemrosesan data dari server. Hal ini meningkatkan pengalaman pengguna dengan membuat aplikasi web terasa lebih cepat dan responsif.
+
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+### Perbandingan Fetch API dan jQuery AJAX
+
+| Kriteria           | Fetch API                                                         | jQuery AJAX                                                                               |
+| ------------------ | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Sintaksis**      | Modern, menggunakan Promise dan async/await.                      | Lebih ringkas dan mudah dipahami.                                                         |
+| **Ringan**         | Ringan, hanya membutuhkan beberapa baris kode.                    | Memuat library tambahan, cenderung lebih berat.                                           |
+| **Fleksibilitas**  | Dapat mengelola berbagai jenis request dan response.              | Terbatas pada fitur dasar AJAX.                                                           |
+| **Dukungan**       | Didukung di semua browser modern.                                 | Memiliki penanganan perbedaan browser, namun tidak semua fitur didukung di semua browser. |
+| **Kompatibilitas** | N/A                                                               | Menangani perbedaan antar browser dengan baik.                                            |
+| **Kelebihan**      | Fleksibel, modern, dan efisien.                                   | Sintaksis mudah dipahami, kompatibilitas baik.                                            |
+| **Kekurangan**     | Membutuhkan penanganan lebih lanjut untuk perbedaan browser lama. | Lebih berat jika hanya digunakan untuk AJAX requests saja.                                |
+| **Popularitas**    | Semakin populer di komunitas pengembang JavaScript.               | Sudah lama populer, banyak sumber dan dokumentasi.                                        |
+
+**Pendapat:** Pemilihan antara Fetch API dan jQuery AJAX tergantung pada kebutuhan proyek dan preferensi pengembang. Fetch API menawarkan pendekatan yang lebih modern dan efisien, sementara jQuery AJAX menyediakan sintaksis yang lebih ringkas dan mudah dipahami, terutama untuk pengembang yang sudah terbiasa dengan jQuery.
+
+## Cara Implementasi
+
+Mengimplementasikan AJAX GET:
+
+- Membuat fungsi `getItems` untuk melakukan fetch pada berkas `main.html` yang memanggil suatu fungsi di `views.py`.
+- Mengambil item pengguna tersebut dan mengembalikannya dalam format JSON di `views.py`.
+- Membuat fungsi untuk memperbarui tampilan kartu. Fungsi ini akan memanggil fungsi `getItems` dan memindahkan kode pembuatan kartu HTML ke dalam fungsi `refreshItems`. Fungsi ini membuat kartu untuk setiap item.
+- Routing semua fungsi baru di `views.py` pada `urls.py`.
+
+views.py
+
+```
+...
+def get_item_json(request):
+    item = Item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', item))
+
+@csrf_exempt
+def create_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, description=description, user=user)
+        new_item.save()
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+...
+```
+
+urls.py
+
+```
+...
+from main.views import  get_item_json, create_ajax
+...
+urlpatterns = [
+...
+    path('get-item/', get_item_json, name='get_item_json'),
+    path('create-ajax/', create_ajax, name='create_ajax')
+]
+```
+
+Mengimplementasikan AJAX POST:
+
+- Membuat formulir modal dan membuat tombol untuk membuka modal tersebut.
+- Membuat fungsi `create_ajax` yang berfungsi untuk menambahkan item di `views.py`. Fungsi ini mengambil data dari modal, membuat objek Item baru dengan data yang diperoleh, dan menyimpannya ke database.
+- Routing untuk fungsi tersebut pada `urls.py`.
+- Menghubungkan formulir ke fungsi `create_ajax` dengan membuat suatu fungsi menggunakan JavaScript. Fungsi ini adalah `addItem` dan akan melakukan fetch terhadap `create_ajax` dengan mengirimkan permintaan HTTP menggunakan metode POST dan tubuh berupa data-data yang dikirimkan dari modal. Kemudian memanggil fungsi `refreshItems` untuk memperbarui daftar item berikutnya dan mengosongkan kolom input pada modal.
+
+Mengumpulkan berkas statis (seperti pada Tutorial 2):
+
+- Menambahkan `STATIC_ROOT = os.path.join(BASE_DIR, 'static')` pada berkas `settings.py` (path direktori di mana semua berkas statis yang dikumpulkan oleh `collectstatic` akan disalin).
+- Menjalankan perintah `python manage.py collectstatic` di terminal.
+
+Menjawab pertanyaan Tugas Individu 6.
+
+</details>
+
+<details>
 <summary> Tugas 5 </summary>
 
 ## Manfaat dari setiap element selector dan waktu yang tepat untuk menggunakannya
