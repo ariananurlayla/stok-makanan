@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 # Install system packages required Django.
 RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
-&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN addgroup --system django \
     && adduser --system --ingroup django django
