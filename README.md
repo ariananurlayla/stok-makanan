@@ -257,7 +257,7 @@ HTML digunakan untuk mengirimkan tampilan halaman web, dapat diibaratkan seperti
 
 2. Membuat direktori `templates` di _root folder_. Di dalam folder tersebut, saya menambahkan `base.html` sebagai template.
 
-3. Membuat `_form_s.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur _input_ _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
+3. Membuat `forms.py` di `main` yang mengimplementasikan `django._form_s` untuk membantu penyusunan struktur _input_ _form_ yang akan dibuat. Kode yang saya gunakan mirip dengan yang telah diajarkan saat tutorial. Perbedaanya terdapat pada nama model yang sekarang menjadi `Item` dan sebuah field `amount` yang menggantikan field `price`.
 
 ```
 from django.forms import ModelForm
