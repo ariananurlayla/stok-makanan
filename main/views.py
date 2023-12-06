@@ -7,7 +7,7 @@ from django.http import (
     HttpResponseNotFound,
     JsonResponse,
 )
-from main.forms import ProductForm, Item
+from main.forms import ItemForm, Item
 from django.urls import reverse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
