@@ -7,7 +7,7 @@ from django.http import (
     HttpResponseNotFound,
     JsonResponse,
 )
-from main.forms import ItemForm, Item
+from main.forms import ProductForm, Item
 from django.urls import reverse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
@@ -59,9 +59,8 @@ def create_product(request):
         Pengguna diarahkan kembali ke halaman utama
         """
         product = form.save(commit=False)
-        product.user = (
-            request.user
-        )  # menandakan bahwa objek tersebut dimiliki oleh pengguna yang sedang login
+        product.user = request.user
+        # menandakan bahwa objek tersebut dimiliki oleh pengguna yang sedang login
         product.save()
         return HttpResponseRedirect(reverse("main:show_main"))
 
@@ -71,7 +70,7 @@ def create_product(request):
 
 # Tugas 6: Membuat Fungsi untuk Mengembalikan Data JSON
 # Fungsi ini akan digunakan untuk menampilkan data produk pada HTML dengan menggunakan fetch
-def get_item_json(request):
+def get_product_json(request):
     item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", item))
 
@@ -96,12 +95,6 @@ def create_ajax(request):
         return HttpResponse(b"CREATED", status=201)
 
     return HttpResponseNotFound()
-
-
-def show_html(request):
-    data = Item.objects.all()
-    context = {"items": data}
-    return render(request, "show_table.html", context)
 
 
 def show_xml(request):
@@ -247,7 +240,6 @@ def create_product_flutter(request):
         new_product = Item.objects.create(
             user=request.user,
             name=data["name"],
-            artist=data["artist"],
             amount=int(data["amount"]),
             description=data["description"],
         )

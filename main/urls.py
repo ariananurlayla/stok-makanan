@@ -35,7 +35,7 @@ urlpatterns = [
     path("remove_all/<int:id>/", remove_all, name="remove_all"),
     path("profile/", profile, name="profile"),
     # path url tugas 6
-    path("get-item/", get_item_json, name="get_item_json"),
+    path("get-product/", get_product_json, name="get_product_json"),
     path("create-ajax/", create_ajax, name="create_ajax"),
     path("create-flutter/", create_product_flutter, name="create_product_flutter"),
 ]
