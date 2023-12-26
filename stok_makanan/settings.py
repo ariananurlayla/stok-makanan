@@ -33,8 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-# CSRF_TRUSTED_ORIGIN = ["https://ariana-nurlayla-tugas.pbp.cs.ui.ac.id"]
-CSRF_TRUSTED_ORIGIN = ["http://localhost:8000/"]
+CSRF_TRUSTED_ORIGIN = ["https://ariana-nurlayla-tugas.pbp.cs.ui.ac.id"]
+# CSRF_TRUSTED_ORIGIN = ["http://localhost:8000/"]
 
 
 # Application definition
