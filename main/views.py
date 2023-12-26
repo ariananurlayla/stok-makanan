@@ -48,7 +48,7 @@ def profile(request):
 
 
 def create_product(request):
-    form = ItemForm(request.POST or None)
+    form = ProductForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
         """

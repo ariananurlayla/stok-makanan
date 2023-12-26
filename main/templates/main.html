@@ -299,7 +299,7 @@
 <!-- Tugas 6 -->
 <script>
     async function getItems() {
-        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
         // fetch() API ke data JSON secara asynchronous
         // Setelah data di-fetch, fungsi then() digunakan untuk melakukan parse pada data JSON menjadi objek JavaScript
     }

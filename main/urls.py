@@ -4,17 +4,19 @@ from main.views import (
     create_product,
     show_xml,
     show_json,
-    show_xml_by_id,
     show_json_by_id,
-    create_product_flutter,
+    show_xml_by_id,
 )
-
-# Tugas 4: import fungsi register, login_user, logout_user
-from main.views import register, login_user, logout_user
-from main.views import increase, decrease, remove_all, profile
-
-# Tugas 6
-from main.views import get_item_json, create_ajax
+from main.views import (
+    login_user,
+    register,
+    logout_user,
+    increase,
+    decrease,
+    remove_all,
+    profile,
+)
+from main.views import get_product_json, create_ajax, create_product_flutter
 
 app_name = "main"
 
